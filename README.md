@@ -1,6 +1,17 @@
 # Project API Management
 
-Bu proje, Laravel Sail tabanlı bir Docker ortamında çalışacak şekilde yapılandırılmıştır.
+Bu proje, Laravel Sail tabanlı bir Docker ortamında çalışacak şekilde yapılandırılmıştır. Kullanılan teknolojiler, ve yöntemler.
+- Redis
+- Form Request Sınıfları(request validation)
+- Katmanlı Mimari
+- Laravel Resource Sınıfları
+- Docker, Sail
+- Laravel Sanctum
+- Postman
+
+
+
+
 
 ## Gereksinimler
 
