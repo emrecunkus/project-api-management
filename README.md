@@ -2,7 +2,7 @@
 
 Bu proje, Laravel Sail tabanlı bir Docker ortamında çalışacak şekilde yapılandırılmıştır.
 
-## 🚀 Gereksinimler
+## Gereksinimler
 
 - [Docker](https://www.docker.com/)
 - Docker Compose (Docker Desktop ile birlikte gelir)
@@ -10,7 +10,7 @@ Bu proje, Laravel Sail tabanlı bir Docker ortamında çalışacak şekilde yap�
 
 ---
 
-## 🔧 Kurulum Adımları
+## Kurulum Adımları
 
 ### 1. Projeyi Klonla
 
@@ -49,7 +49,7 @@ composer install
 
 ---
 
-## ⚙️ Çalışan Servisler
+## Çalışan Servisler
 
 | Servis        | Adres                      |
 |---------------|----------------------------|
@@ -63,7 +63,7 @@ composer install
 
 ---
 
-## 👤 Örnek Giriş Bilgileri
+##  Örnek Giriş Bilgileri
 
 | Rol     | E-posta              | Şifre     |
 |---------|----------------------|-----------|
@@ -72,7 +72,7 @@ composer install
 
 ---
 
-## 📬 API Testi - Postman
+##  API Testi - Postman
 
 ### ➤ Giriş Yap (Token Al)
 
@@ -101,7 +101,7 @@ Yanıt içerisindeki **token**'ı kopyalayın.
 
 ---
 
-### 🔐 Token ile Korunan API’leri Test Et
+###  Token ile Korunan API’leri Test Et
 
 **Postman Authorization:**
 
@@ -110,7 +110,7 @@ Yanıt içerisindeki **token**'ı kopyalayın.
 
 ---
 
-### 📦 Postman Koleksiyonu
+###  Postman Koleksiyonu
 
 1. Postman’i açın
 2. `Import > File` seçin
@@ -120,12 +120,8 @@ Yanıt içerisindeki **token**'ı kopyalayın.
 
 ---
 
-## 🧪 Test
+##  Test
 
 Tüm API endpointlerini test etmek için Postman koleksiyonunu kullanabilirsiniz.
 
----
 
-## 📄 Lisans
-
-Bu proje MIT lisansı ile lisanslanmıştır.
