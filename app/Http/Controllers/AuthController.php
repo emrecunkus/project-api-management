@@ -47,7 +47,7 @@ class AuthController extends Controller
 
             return response()->json(['token' => $token]);
         } catch (ValidationException $e) {
-            // Bu doğrulama hatası olduğu için, burada yakalamalı ve uygun yanıtı döndürmelisiniz
+            // Bu doğrulama hatası olduğu için, burada yakalanır ve uygun yanıt döner.
             return response()->json(['message' => 'Invalid credentials.'], 401);
         }
 
