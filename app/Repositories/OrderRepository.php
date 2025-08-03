@@ -32,4 +32,9 @@ class OrderRepository
         $order = $this->find($id);
         $order->delete();
     }
+    public function getByUser($userId)
+    {
+        return Order::where('user_id', $userId)->get();
+    }
+
 }

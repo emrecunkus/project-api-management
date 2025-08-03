@@ -1,8 +1,13 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Services\ProductService;
 use Illuminate\Http\Request;
+use App\Http\Requests\Product\StoreProductRequest;
+use App\Http\Requests\Product\UpdateProductRequest;
+use App\Http\Resources\ProductResource;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 
 class ProductController extends Controller
 {
@@ -10,28 +15,43 @@ class ProductController extends Controller
 
     public function index()
     {
-        return response()->json($this->productService->getAllProducts());
+        $products = $this->productService->getAllProducts();
+        return ProductResource::collection($products);
     }
 
     public function show($id)
     {
-        return response()->json($this->productService->getProduct($id));
+        try {
+            $product = $this->productService->getProduct($id);
+            return new ProductResource($product);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['message' => 'Ürün bulunamadı.'], 404);
+        }
     }
 
-    public function store(Request $request)
+    public function store(StoreProductRequest $request)
     {
-        return response()->json($this->productService->createProduct($request->all()), 201);
+        $product = $this->productService->createProduct($request->validated());
+        return new ProductResource($product);
     }
 
-    public function update(Request $request, $id)
+    public function update(UpdateProductRequest $request, $id)
     {
-        return response()->json($this->productService->updateProduct($id, $request->all()));
+        try {
+            $product = $this->productService->updateProduct($id, $request->validated());
+            return new ProductResource($product);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['message' => 'Ürün bulunamadı.'], 404);
+        }
     }
 
     public function destroy($id)
     {
-        $this->productService->deleteProduct($id);
-        return response()->json(null, 204);
+        try {
+            $this->productService->deleteProduct($id);
+            return response()->json(null, 204);
+        } catch (ModelNotFoundException $e) {
+            return response()->json(['message' => 'Ürün bulunamadı.'], 404);
+        }
     }
 }
-

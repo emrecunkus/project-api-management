@@ -9,22 +9,24 @@ use Illuminate\Support\Facades\Auth;
 class CheckRole
 {
     /**
-     * Kullanıcı rolünü kontrol et.
+     * Kullanıcının rolünü kontrol et (tek veya çoklu).
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next
-     * @param  string  $role
+     * @param  string  $roles
      * @return mixed
      */
-    public function handle(Request $request, Closure $next, $role)
+    public function handle(Request $request, Closure $next, $roles)
     {
-        // Kullanıcının oturum açıp açmadığını kontrol et
         if (!Auth::check()) {
             return response()->json(['message' => 'Unauthorized'], 401);
         }
 
-        // Kullanıcının rolünü kontrol et
-        if (Auth::user()->role !== $role) {
+        $userRole = Auth::user()->role;
+
+        $roleList = explode('|', $roles); // admin|customer gibi string'i diziye çevir
+
+        if (!in_array($userRole, $roleList)) {
             return response()->json(['message' => 'Forbidden'], 403);
         }
 
