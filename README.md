@@ -114,7 +114,7 @@ Yanıt içerisindeki **token**'ı kopyalayın.
 
 1. Postman’i açın
 2. `Import > File` seçin
-3. `postman_collection.json` dosyasını yükleyin (proje ana dizininde yer alır)
+3. `project_api_management.postman_collection.json` dosyasını yükleyin (proje ana dizininde yer alır)
 4. Login endpoint’inden token alın
 5. Diğer endpointleri Bearer Token ile test edin
 
