@@ -1,81 +1,131 @@
-Bu proje Laravel Sail tabanlı bir Docker ortamında çalışacak şekilde yapılandırılmıştır.
+# Project API Management
 
+Bu proje, Laravel Sail tabanlı bir Docker ortamında çalışacak şekilde yapılandırılmıştır.
 
-->Gereksinimler 
--Docker
--Docker Compose (Docker Desktop ile birlikte gelir)
--Laravel Sail (proje içinde yüklüdür)
+## 🚀 Gereksinimler
 
-Kurulum Adımları aşağıdaki gibidir. 
-1. Projeyi klonla
+- [Docker](https://www.docker.com/)
+- Docker Compose (Docker Desktop ile birlikte gelir)
+- Laravel Sail (proje içerisinde yüklüdür)
+
+---
+
+## 🔧 Kurulum Adımları
+
+### 1. Projeyi Klonla
+
+```bash
 git clone https://github.com/emrecunkus/project-api-management.git project_api_management
 cd project_api_management
+```
 
-2.Ortam dosyasını oluştur. 
+### 2. Ortam Dosyasını Oluştur
+
+```bash
 cp .env.example .env
+```
 
-3.Bağımlıkları yükle; 
-sudo apt install php8.4-xml (kendi versiyonunuza göre değişebilir)
+### 3. Bağımlılıkları Yükle
 
-composer install 
+Laravel Sail çalışabilmesi için PHP XML eklentisi gerekebilir:
 
-4. Uygulama set upları 
+```bash
+sudo apt install php8.4-xml # PHP versiyonuna göre değişebilir
+composer install
+```
+
+### 4. Uygulama Servislerini Başlat
+
+```bash
 ./vendor/bin/sail up -d
 ./vendor/bin/sail artisan key:generate
+```
 
+### 5. Migration ve Seeder İşlemleri
 
-Şunlar çalışacaktır. 
-Laravel 
-MySQL
-Redis
-Meilisearch
-Mailpit
-Selenium
-PhpMyAdmin
-
-Migration ve sedeleri çalıştır.. 
+```bash
 ./vendor/bin/sail artisan migrate:fresh --seed
+```
 
-Örnek Giriş Bilgileri 
-Rol-E-posta-	Şifre
-Admin	admin@example.com	password
-Customer	customer@example.com	password
+---
 
-Örnek bir postman testi->>> Giriş Yap (Token Al) 
+## ⚙️ Çalışan Servisler
 
-POST /api/login 
+| Servis        | Adres                      |
+|---------------|----------------------------|
+| Laravel Uygulaması | http://localhost             |
+| PhpMyAdmin    | http://localhost:8081      |
+| Mailpit       | http://localhost:8025      |
+| Meilisearch   | http://localhost:7700      |
+| Selenium      | http://localhost:4444      |
+| Redis         | Dahili (localhost:6379)    |
+| MySQL         | Dahili (localhost:3306)    |
+
+---
+
+## 👤 Örnek Giriş Bilgileri
+
+| Rol     | E-posta              | Şifre     |
+|---------|----------------------|-----------|
+| Admin   | admin@example.com    | password  |
+| Customer | customer@example.com | password  |
+
+---
+
+## 📬 API Testi - Postman
+
+### ➤ Giriş Yap (Token Al)
+
+**Endpoint:**
+
+```
+POST /api/login
+```
+
+**Header:**
+
+```json
 Content-Type: application/json
+```
 
+**Body:**
+
+```json
 {
   "email": "admin@example.com",
   "password": "password"
 }
-->>>Dönen cevap içindeki token değerini kopyalayın.
+```
 
-->>> Token ile Korunan API’leri Test Et
-Postman’de Authorization sekmesinden:
+Yanıt içerisindeki **token**'ı kopyalayın.
 
-Type: Bearer Token
+---
 
-Token: (Girişte aldığın token)
+### 🔐 Token ile Korunan API’leri Test Et
 
--> Postman Koleksiyonu
-Postman'i açın
+**Postman Authorization:**
 
-"Import" > "File" > postman_collection.json dosyasını seçin
+- **Type:** Bearer Token  
+- **Token:** (Girişte aldığınız token)
 
-Login endpoint'i ile token alın
+---
 
-Diğer isteklerde Bearer Token kullanarak API'yi test edin
+### 📦 Postman Koleksiyonu
 
-Servis	Adres
-Uygulama->>	http://localhost
-PhpMyAdmin->>	http://localhost:8081
+1. Postman’i açın
+2. `Import > File` seçin
+3. `postman_collection.json` dosyasını yükleyin (proje ana dizininde yer alır)
+4. Login endpoint’inden token alın
+5. Diğer endpointleri Bearer Token ile test edin
 
-Test
-API endpointlerini test etmek için Postman koleksiyonu kullanabilirsiniz. Proje ana dizininde mevcuttur.
+---
 
+## 🧪 Test
 
+Tüm API endpointlerini test etmek için Postman koleksiyonunu kullanabilirsiniz.
 
+---
 
+## 📄 Lisans
 
+Bu proje MIT lisansı ile lisanslanmıştır.
