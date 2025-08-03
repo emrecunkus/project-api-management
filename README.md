@@ -1,30 +1,30 @@
 Bu proje Laravel Sail tabanlı bir Docker ortamında çalışacak şekilde yapılandırılmıştır.
 
 
-->Gereksinimler
+->Gereksinimler 
 -Docker
 -Docker Compose (Docker Desktop ile birlikte gelir)
 -Laravel Sail (proje içinde yüklüdür)
 
-Kurulum Adımları aşağıdaki gibidir.
+Kurulum Adımları aşağıdaki gibidir. 
 1. Projeyi klonla
 git clone https://github.com/emrecunkus/project-api-management.git project_api_management
 cd project_api_management
 
-2.Ortam dosyasını oluştur.
+2.Ortam dosyasını oluştur. 
 cp .env.example .env
 
-3. Uygulama set upları
+3.Bağımlıkları yükle; 
+sudo apt install php8.4-xml (kendi versiyonunuza göre değişebilir)
+
+composer install 
+
+4. Uygulama set upları 
 ./vendor/bin/sail up -d
 ./vendor/bin/sail artisan key:generate
 
-4.Bağımlıkları yükle;
-composer install bu çalışmazsa şu->>> ./vendor/bin/sail composer install
 
-5.Docker service ini başlat;
-./vendor/bin/sail up -d
-
-Şunlar çalışackatır.
+Şunlar çalışacaktır. 
 Laravel 
 MySQL
 Redis
@@ -33,17 +33,17 @@ Mailpit
 Selenium
 PhpMyAdmin
 
-Migration ve sedeleri çalıştır..
+Migration ve sedeleri çalıştır.. 
 ./vendor/bin/sail artisan migrate:fresh --seed
 
-Örnek Giriş Bilgileri
+Örnek Giriş Bilgileri 
 Rol-E-posta-	Şifre
 Admin	admin@example.com	password
 Customer	customer@example.com	password
 
-Örnek bir postman testi->>> Giriş Yap (Token Al)
+Örnek bir postman testi->>> Giriş Yap (Token Al) 
 
-POST /api/login
+POST /api/login 
 Content-Type: application/json
 
 {
