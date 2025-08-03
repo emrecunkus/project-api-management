@@ -45,7 +45,7 @@ sudo apt install php8.4-xml # PHP versiyonuna göre değişebilir
 composer install
 ```
 
-### 4. Uygulama Servislerini Başlat
+### 4. Uygulama Servislerini Başlat (db adı project_db olarak oluşacaktır)
 
 ```bash
 ./vendor/bin/sail up -d
